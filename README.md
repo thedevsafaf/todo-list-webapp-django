@@ -71,3 +71,12 @@ You can now run the development server:
 ```
 $ python manage.py runserver
 ```
+
+![main page](https://github.com/thedevsafaf/todo-list-webapp-django/assets/85129653/860c7a98-ea2f-4017-968d-1623fed204f6)
+
+![todo main page](https://github.com/thedevsafaf/todo-list-webapp-django/assets/85129653/f9fb6d94-3da4-44c0-9b2e-3aecb0000383)
+
+![about page](https://github.com/thedevsafaf/todo-list-webapp-django/assets/85129653/05f323f4-bff8-4f1f-abeb-e3ad979e0921)
+
+![contact page](https://github.com/thedevsafaf/todo-list-webapp-django/assets/85129653/ca0ddca0-0d51-495c-86f0-6fde4de18f36)
+
