@@ -1,0 +1,18 @@
+{% extends 'web/base.html' %}
+
+{% block content %}
+	<div class="container">
+        </br>
+        <h1>{{edit_text}}</h1>
+        </br>
+
+        <form method="POST" class="row">
+		{% csrf_token %} 
+			<label class="col-lg-2"></label>
+			<input type="text" class="form-control col-lg-6" name="task" placeholder="{{task_item.task}}" value="{{task_item.task}}">
+			<input type="hidden" class="form-control col-lg-6" name="done" placeholder="{{task_item.done}}" value="{{task_item.done}}">
+            <button type="submit" class="btn btn-primary col-lg-2">Update Task</button>
+		</form>
+
+    </div>
+{% endblock content %}

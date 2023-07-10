@@ -1,0 +1,61 @@
+{% extends 'web/base.html' %}
+
+{% block content %}
+	<div class="container">
+        <h3 style="text-align:center; margin-top:20px; margin-bottom:20px;">{{welcome_text}}</h3>
+		{% if messages %}	 
+			{% for message in messages%}
+				<div class="alert alert-info alert-dismissible fade show" role="alert">
+					{{message}}
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			{% endfor %}
+		{% endif %}
+		 
+		<form method="POST" class="row">
+		{% comment %} for security {% endcomment %}
+		{% csrf_token %} 
+			<label class="col-lg-4"></label>
+			<input type="text" class="form-control col-lg-6" name="task" placeholder="New Task">
+			<button type="submit" class="btn btn-primary col-lg-2">Add Task</button>
+		</form>
+		</br>
+		<table class="table table-bordered table-strip text-center">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Task</th>
+					<th scope="col">Done</th>
+					<th scope="col">Edit</th>
+					<th scope="col">Delete</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+			{% if all_tasks %}
+				{% for item in all_tasks %}
+					{% if item.done %}
+						<tr class="table-success">
+							<th scope="row">{{item.task}}</th>
+							<td><a href="{% url 'todolist_app:pending_task' item.id %}"><button type="button" class="btn btn-dark">Mark as Pending</button></a></td>
+							<td><a href="{% url 'todolist_app:edit_task' item.id %}"><button type="button" class="btn btn-outline-primary">Edit</button></a></td>
+							<td><a href="{% url 'todolist_app:delete_task' item.id %}"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
+						</tr>
+					{% else %}
+						<tr>
+							<th scope="row">{{item.task}}</th>
+							<td><a href="{% url 'todolist_app:complete_task' item.id %}"><button type="button" class="btn btn-dark">Mark as Completed</button></a></td>
+							<td><a href="{% url 'todolist_app:edit_task' item.id %}"><button type="button" class="btn btn-outline-primary">Edit</button></a></td>
+							<td><a href="{% url 'todolist_app:delete_task' item.id %}"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+			</tbody>
+		</table>
+    </div>
+{% endblock content %}
+
+
+ 
